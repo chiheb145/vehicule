@@ -17,3 +17,8 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::get('/list_marque', ['as' => 'list_marque', 'uses' => 'Api\VehiculeController@list_marque']);
+Route::get('/list_modele', ['as' => 'list_modele', 'uses' => 'Api\VehiculeController@list_modele']);
+Route::post('/update_vehicule', ['as' => 'update_vehicule', 'uses' => 'Api\VehiculeController@update_vehicule']);
+

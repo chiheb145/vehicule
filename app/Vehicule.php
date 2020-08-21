@@ -10,9 +10,9 @@ class Vehicule extends Model
     protected $table = 'vehicules';
 
     protected $fillable = [
-        'nom',
-        'marque',
-        'modele',
+        'name',
+        'marque_id',
+        'modele_id',
     ];
     protected $dates = [
         'created_at',
@@ -22,12 +22,12 @@ class Vehicule extends Model
 
     public function modele_v()
     {
-        return $this->hasOne('App\Modele', 'id', 'modele');
+        return $this->hasOne('App\Modele', 'id', 'modele_id');
     }
 
     public function marque_v()
     {
-        return $this->hasOne('App\Marque', 'id','marque');
+        return $this->hasOne('App\Marque', 'id','marque_id');
     }
 
 }

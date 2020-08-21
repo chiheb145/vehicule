@@ -20,33 +20,47 @@ class VehiculeController extends Controller
     {
 
         $vehicule=new Vehicule();
-        $vehicule->nom=$request->nom;
-        $vehicule->marque=$request->marque;
-        $vehicule->modele=$request->modele;
+        $vehicule->name=$request->nom;
+        $vehicule->marque_id=$request->marque;
+        $vehicule->modele_id=$request->modele;
 
         $vehicule->save();
-        return back();
+        return back()->with(['success' => 'Ajout de véhicule réussite']);
     }
     public function store_modele(Request $request)
     {
+        $modeles=Modele::all();
+        foreach ($modeles as $model)
+        {
+            if($model->name==$request->nom){
+                return back()->with(['error' => 'Modèle existe déjà']);
+            }
+        }
         $modele=new Modele();
         $modele->name=$request->nom;
         $modele->save();
-        return back();
+        return back()->with(['success' => 'Ajout de modèle réussite']);
 
     }
     public function store_marque(Request $request)
     {
+        $marques=Modele::all();
+        foreach ($marques as $marque)
+        {
+            if($marque->name==$request->nom){
+                return back()->with(['error' => 'Marque existe déjà']);
+            }
+        }
         $modele=new Marque();
         $modele->name=$request->nom;
         $modele->save();
-        return back();
+        return back()->with(['success' => 'Ajout de marque réussite']);
     }
     public function delete_vehicule($id)
     {
         $vehicule=Vehicule::find($id);
         $vehicule->delete();
-        return back();
+        return back()->with(['error' => 'Véhicule supprimé avec succès']);
     }
     public function edit($id)
     {
@@ -59,9 +73,9 @@ class VehiculeController extends Controller
     {
 
         $vehicule=Vehicule::find($request->vehicule_id);
-        $vehicule->nom=$request->nom;
-        $vehicule->modele=$request->modele;
-        $vehicule->marque=$request->marque;
+        $vehicule->name=$request->nom;
+        $vehicule->modele_id=$request->modele;
+        $vehicule->marque_id=$request->marque;
         $vehicule->save();
         return redirect()->route('vehicule');
 

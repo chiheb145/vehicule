@@ -26,7 +26,7 @@
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item active" aria-current="page">
-                            <h4 class="titre">Modifier la véhicule {{$vehicule->nom}}</h4>
+                            <h4 class="titre">Modifier la véhicule {{$vehicule->name}}</h4>
                         </li>
                     </ol>
                 </nav>
@@ -43,7 +43,7 @@
                                 <div class="form-group row">
                                     <label  class="col-sm-2 control-label col-form-label" >Nom</label>
                                     <div class="col-sm-5">
-                                        <input type="text" name="nom" class="form-control" id="nom" value="{{$vehicule->nom}}" required>
+                                        <input type="text" name="nom" class="form-control" id="nom" value="{{$vehicule->name}}" required>
                                     </div>
                                 </div>
 
@@ -53,7 +53,7 @@
 
                                     <select name="modele" class="form-control col-sm-6" id="modele">
                                         @foreach($modeles as $m)
-                                            <option value="{{$m->id}}" @if($m->id == $vehicule->modele)selected @endif>{{$m->name}}</option>
+                                            <option value="{{$m->id}}" @if($m->id == $vehicule->modele_id)selected @endif>{{$m->name}}</option>
                                         @endforeach
                                     </select>
 
@@ -63,7 +63,7 @@
 
                                     <select name="marque" class="form-control col-sm-6" id="marque">
                                         @foreach($marques as $m)
-                                            <option value="{{$m->id}}" @if($m->id == $vehicule->marque)selected @endif>{{$m->name}}</option>
+                                            <option value="{{$m->id}}" @if($m->id == $vehicule->marque_id)selected @endif>{{$m->name}}</option>
                                         @endforeach
                                     </select>
 

@@ -23,6 +23,28 @@
         <div class="row">
             <h1>Listes des véhicules</h1>
         </div>
+        @if(session()->has('success'))
+            <div class="container-fluid">
+                <div class="row pt-2">
+
+                    <div class="col-12 alert alert-success">
+                        {{ session()->get('success') }}
+                    </div>
+                </div>
+            </div>
+
+        @endif
+        @if(session()->has('error'))
+            <div class="container-fluid">
+                <div class="row pt-2">
+
+                    <div class="col-12 alert alert-error">
+                        {{ session()->get('error') }}
+                    </div>
+                </div>
+            </div>
+
+        @endif
         <div class="row justify-content-center">
             @foreach($vehicules as $vehicule)
 
